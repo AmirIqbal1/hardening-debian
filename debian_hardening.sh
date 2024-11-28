@@ -92,17 +92,19 @@ systemctl enable auditd
 systemctl start auditd
 
 # Configure Fail2Ban
-echo "Configuring Fail2Ban..."
-cat <<EOT > /etc/fail2ban/jail.local
-[DEFAULT]
-bantime = 3600
-findtime = 600
-maxretry = 5
+echo "Installing and configuring Fail2Ban..."
 
+cat <<EOT > /etc/fail2ban/jail.local
 [sshd]
 enabled = true
+port = 22
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 3
+bantime = 3600
 EOT
-systemctl restart fail2ban
+
+systemctl enable fail2ban --now
 
 # Stop services before disabling
 systemctl stop avahi-daemon && systemctl disable avahi-daemon

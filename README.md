@@ -12,6 +12,7 @@ This script is designed to harden Debian-based (tested on 12) systems by applyin
 * Disables unused services to reduce attack surface.
 * Configures kernel parameters for additional security.
 * Sets up automatic updates for critical patches.
+* Uses Lynis to audit system at the end
 
 ## Caution
 This script makes significant changes to your system's configuration. Make sure to review the script and test it in a non-production environment before using it on production systems.

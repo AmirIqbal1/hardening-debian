@@ -18,7 +18,7 @@ apt update && apt upgrade -y || { echo "Failed to update/upgrade packages"; exit
 
 # Install necessary security tools
 echo "Installing essential security tools..."
-apt install -y ufw fail2ban clamav unattended-upgrades auditd
+apt install -y ufw fail2ban clamav unattended-upgrades auditd lynis
 
 # Enable automatic updates
 echo "Configuring unattended upgrades..."
@@ -148,3 +148,11 @@ systemctl enable apparmor
 systemctl start apparmor
 
 echo "Hardening complete. Logs available at $LOGFILE."
+echo ""
+echo "Now lets use Lynis to audit system"
+
+echo "======================================="
+echo "auditing..."
+
+lynis audit system 
+echo "======================================="

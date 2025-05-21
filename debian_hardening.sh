@@ -114,12 +114,15 @@ systemctl stop cups && systemctl disable cups
 echo "Disabling unnecessary services..."
 systemctl disable avahi-daemon
 systemctl disable cups
-systemctl disable bluetooth
 
+## Remove comment below to disable bluetooth
+# systemctl disable bluetooth
+
+## Remove comments below to scan system
 # Scan for malware
-echo "Scanning for malware with ClamAV..."
-freshclam
-clamscan -r / --bell -i
+# echo "Scanning for malware with ClamAV..."
+# freshclam
+# clamscan -r / --bell -i
 
 # Restrict kernel parameters
 echo "Restricting kernel parameters..."
